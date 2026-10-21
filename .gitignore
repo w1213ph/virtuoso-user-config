@@ -3,6 +3,9 @@
 *.vuc-tmp
 *.local.json
 local/
+.env
+.env.*
+.virtuoso-bridge/
 build/
 dist/
 __pycache__/

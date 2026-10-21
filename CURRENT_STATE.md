@@ -2,7 +2,7 @@
 
 版本：0.1.0；整理日期：2026-10-21。
 
-文档于同日按公开用户的使用路径完善：首页列出十个功能、适用人群、场景选择和独立回退示例；新增 [功能手册](docs/FEATURES.md)，结合五张 Mermaid 图说明功能关系、安装、回退、工作点切换及模型选择。本轮为文档更新，安装器和配置逻辑保持原有验证范围。
+首页现以“AI 配置 Virtuoso”为主题，给出具体任务提示和 [virtuoso-bridge-lite](https://github.com/Arcadia-1/virtuoso-bridge-lite)连接关系。连接步骤在 [CONNECT.md](docs/CONNECT.md)，完整手动操作迁至 [INSTALL.md](docs/INSTALL.md)，十项效果与参数在 [功能手册](docs/FEATURES.md)。桥接 CLI 与当前上游文档和实现已核对；本轮没有建立新连接，安装器和配置逻辑保持原有验证范围。
 
 本包从已部署的 IC6.1.8 配置重建，主要源文件的本地快照已与运行来源只读核对一致。原环境历史验证见 docs/CHANGES.md；这不等于移植版或使用者本机所有功能已完成实际行为及 GUI 验收。
 
