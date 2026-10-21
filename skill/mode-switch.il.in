@@ -1,0 +1,72 @@
+; SPDX-License-Identifier: Apache-2.0
+; Change existing DC OP menu callbacks; leave Cadence native functions intact.
+procedure(vucOpMenuCallback(callback)
+ let((w session result)
+  w=hiGetCurrentWindow()
+  session=w->sevSession
+  _annSetApplyGlobalSettingsToAll(t)
+  result=evalstring(callback)
+  when(result
+   foreach(sch hiGetWindowList()
+    when(sch->cellView && sch->cellView->cellViewType=="schematic" && (eq(sch w) || (session && eq(sch->sevSession session)))
+     annLoadAnnotationData(sch strcat(@ROOT@ "/op-annotation/dc-op-active.as"))
+     _annApplyAndRedraw(sch)
+    )
+   )
+  )
+  result
+ )
+)
+procedure(vucOpPatchMenu(menu depth)
+ when(menu && hiIsMenu(menu) && depth<8
+  foreach(name hiGetMenuItems(menu)
+   let((item callback sub replacement position newCallback)
+    item=get(menu name)
+    callback=item->_itemCallback || item->hiCallback
+    when(type(callback)=='string && !rexMatchp("^vucOpMenuCallback" callback) && (rexMatchp("_annSevAnnotateResults.*DCOpPoint" callback) || rexMatchp("sevAnnotateResults.*dcOpPoints" callback))
+     newCallback=sprintf(nil "vucOpMenuCallback(%L)" callback)
+     if(item->_itemCallback then
+      hiSetMenuItemCallback(menu name newCallback)
+     else
+      position=length(hiGetMenuItems(menu))-length(member(name hiGetMenuItems(menu)))
+      replacement=hiCreateMenuItem(?name name ?itemText "DC Operating Points" ?callback newCallback)
+      hiDeleteMenuItem(menu name)
+      hiInsertMenuItem(menu replacement position)
+     )
+    )
+    sub=item->hiSubMenu
+    when(sub vucOpPatchMenu(sub depth+1))
+   )
+  )
+ )
+)
+procedure(vucOpPatchWindow(w)
+ foreach(menu hiGetBannerMenus(w) when(boundp(menu) vucOpPatchMenu(symeval(menu) 0)))
+ foreach(menu '(annSchPopUp_schNoneSliderMenu annCdsNameMenu annCdsParamMenu annCdsTermMenu annOptionsMenu annSchematicSliderMenu annSubMenu) when(boundp(menu) vucOpPatchMenu(symeval(menu) 0)))
+ when(w->sevSession && w->sevSession->window
+  foreach(menu hiGetBannerMenus(w->sevSession->window) when(boundp(menu) vucOpPatchMenu(symeval(menu) 0)))
+ )
+ t
+)
+procedure(vucOpPostInstall(args)
+ vucOpPatchWindow(args->window)
+)
+foreach(app '("schematic" "schematicXL" "analogArtist-schematic" "adexl-schematic" "explorer" "maestro")
+ when(deGetAppInfo(app)
+  unless(member('vucOpPostInstall deGetAppInfo(app)->_userPostInstallTrigList)
+   deRegUserTriggers(app nil nil 'vucOpPostInstall)
+  )
+ )
+)
+_annSetApplyGlobalSettingsToAll(t)
+vucOpModeSwitchLoaded=t
+
+; Also usable when explicitly loaded by the user into an existing session.
+when(boundp('__annNotifyGlobalLevelSettingsNotAppliedToAllInstances)
+ __annNotifyGlobalLevelSettingsNotAppliedToAllInstances=t
+)
+foreach(w hiGetWindowList()
+ when(w->cellView && w->cellView->cellViewType=="schematic"
+  vucOpPatchWindow(w)
+ )
+)

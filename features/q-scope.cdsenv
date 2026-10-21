@@ -1,0 +1,3 @@
+; SPDX-License-Identifier: Apache-2.0
+; UI preferences adapted and revised; see NOTICE.
+schematic objectScope string "all selected"

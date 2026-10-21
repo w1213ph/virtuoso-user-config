@@ -1,0 +1,4 @@
+#!/bin/sh
+# Only this launch; no shell startup files are edited.
+unset QT_SCALE_FACTOR
+exec virtuoso "$@"

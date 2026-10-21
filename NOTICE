@@ -1,0 +1,16 @@
+Virtuoso User Config
+Copyright 2026 Virtuoso User Config contributors.
+
+Some UI preference values and their initial arrangement were adapted from:
+YiDingg, "Use Virtuoso Efficiently - 1. Shortcuts and Initialization"
+https://github.com/YiDingg/YiDingg/blob/main/AnalogIC/Use%20Virtuoso%20Efficiently%20-%201.%20Shortcuts%20and%20Initialization.md
+Upstream repository license: Apache License 2.0.
+
+Modifications: IC6.1.8-tested font/layout choices, additional Roman defaults,
+selected-object scope, ADE UI preferences, modular configuration selection,
+new annotation generation/menu compatibility, technology-path model defaults,
+portable installation, guarded rollback, privacy checks and documentation.
+The article text, screenshots and vendor software/templates/models are not bundled.
+
+Cadence and Virtuoso are trademarks of their respective owners.
+This project is independent and is not a Cadence product or endorsement.

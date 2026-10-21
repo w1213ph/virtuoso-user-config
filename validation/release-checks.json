@@ -1,0 +1,149 @@
+{
+  "version": "0.1.0",
+  "date": "2026-10-21",
+  "native_version": "IC6.1.8-64b.83",
+  "native_platform": "RHEL 7.9",
+  "linux_unit_tests": {
+    "run": 12,
+    "passed": 12,
+    "skipped": 0
+  },
+  "windows_unit_tests": {
+    "run": 12,
+    "passed": 11,
+    "skipped": 1,
+    "skip_reason": "Windows symlink privilege differences"
+  },
+  "native_independent_modules": [
+    {
+      "feature": "ciw",
+      "install_exit": 0,
+      "load_exit": 0,
+      "parameters_passed": true,
+      "rollback_exit": 0
+    },
+    {
+      "feature": "form-fonts",
+      "install_exit": 0,
+      "load_exit": 0,
+      "parameters_passed": true,
+      "rollback_exit": 0
+    },
+    {
+      "feature": "labels",
+      "install_exit": 0,
+      "load_exit": 0,
+      "parameters_passed": true,
+      "rollback_exit": 0
+    },
+    {
+      "feature": "viva",
+      "install_exit": 0,
+      "load_exit": 0,
+      "parameters_passed": true,
+      "rollback_exit": 0
+    },
+    {
+      "feature": "q-scope",
+      "install_exit": 0,
+      "load_exit": 0,
+      "parameters_passed": true,
+      "rollback_exit": 0
+    },
+    {
+      "feature": "undo-history",
+      "install_exit": 0,
+      "load_exit": 0,
+      "parameters_passed": true,
+      "rollback_exit": 0
+    },
+    {
+      "feature": "ade-ui",
+      "install_exit": 0,
+      "load_exit": 0,
+      "parameters_passed": true,
+      "rollback_exit": 0
+    },
+    {
+      "feature": "op-annotations",
+      "install_exit": 0,
+      "load_exit": 0,
+      "parameters_passed": true,
+      "rollback_exit": 0
+    },
+    {
+      "feature": "workspace",
+      "install_exit": 0,
+      "load_exit": 0,
+      "parameters_passed": true,
+      "rollback_exit": 0
+    },
+    {
+      "feature": "ade-models",
+      "install_exit": 0,
+      "load_exit": 0,
+      "parameters_passed": true,
+      "rollback_exit": 0
+    }
+  ],
+  "native_entry_checks": [
+    {
+      "entry_index": 1,
+      "baseline_diagnostics": 2,
+      "candidate_diagnostics": 2,
+      "new_normalized_diagnostics": 0,
+      "parameter_assertions_passed": 55
+    },
+    {
+      "entry_index": 2,
+      "baseline_diagnostics": 2,
+      "candidate_diagnostics": 2,
+      "new_normalized_diagnostics": 0,
+      "parameter_assertions_passed": 55
+    },
+    {
+      "entry_index": 3,
+      "baseline_diagnostics": 123,
+      "candidate_diagnostics": 123,
+      "new_normalized_diagnostics": 0,
+      "parameter_assertions_passed": 55
+    },
+    {
+      "entry_index": 4,
+      "baseline_diagnostics": 5,
+      "candidate_diagnostics": 5,
+      "new_normalized_diagnostics": 0,
+      "parameter_assertions_passed": 55
+    },
+    {
+      "entry_index": 5,
+      "baseline_diagnostics": 0,
+      "candidate_diagnostics": 0,
+      "new_normalized_diagnostics": 0,
+      "parameter_assertions_passed": 55
+    },
+    {
+      "entry_index": 6,
+      "baseline_diagnostics": 10,
+      "candidate_diagnostics": 10,
+      "new_normalized_diagnostics": 0,
+      "parameter_assertions_passed": 55
+    }
+  ],
+  "ade_l_behavior": {
+    "new_technology_mappings_verified": 3,
+    "manual_selection_preserved": true,
+    "saved_state_preserved": true,
+    "assertions_passed": 5,
+    "new_normalized_diagnostics": 0
+  },
+  "isolated_rollback_exact": true,
+  "deployed_sources_unchanged": true,
+  "gui_visual_acceptance_this_release": false,
+  "limits": [
+    "No new all-module GUI visual acceptance.",
+    "DC annotation switching behavior was historically validated; portable rule generation and menu loading tested here.",
+    "Other ADE variants were historically tested; this release reran ADE L only.",
+    "Diagnostic paths/PIDs and interleaved shell prefixes normalized; existing PDK issues remain."
+  ]
+}

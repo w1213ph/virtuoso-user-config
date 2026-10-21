@@ -1,0 +1,52 @@
+[
+  {
+    "library": "analogLib",
+    "cell": "nbsim",
+    "inline_slots": 3
+  },
+  {
+    "library": "analogLib",
+    "cell": "nbsim4",
+    "inline_slots": 3
+  },
+  {
+    "library": "analogLib",
+    "cell": "nmos",
+    "inline_slots": 3
+  },
+  {
+    "library": "analogLib",
+    "cell": "nmos4",
+    "inline_slots": 3
+  },
+  {
+    "library": "analogLib",
+    "cell": "nsoip",
+    "inline_slots": 3
+  },
+  {
+    "library": "analogLib",
+    "cell": "pbsim",
+    "inline_slots": 3
+  },
+  {
+    "library": "analogLib",
+    "cell": "pbsim4",
+    "inline_slots": 3
+  },
+  {
+    "library": "analogLib",
+    "cell": "pmos",
+    "inline_slots": 3
+  },
+  {
+    "library": "analogLib",
+    "cell": "pmos4",
+    "inline_slots": 3
+  },
+  {
+    "library": "analogLib",
+    "cell": "psoip",
+    "inline_slots": 3
+  }
+]

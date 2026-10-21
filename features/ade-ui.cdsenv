@@ -1,0 +1,4 @@
+; SPDX-License-Identifier: Apache-2.0
+; UI preferences adapted and revised; see NOTICE.
+adexl.gui autoCornerUpdate boolean t
+adexl.gui outputTabsShowDefault string "\"Run Preview\""

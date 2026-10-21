@@ -1,0 +1,48 @@
+; SPDX-License-Identifier: Apache-2.0
+; New-session defaults only. Saved states and corners retain their settings.
+load(strcat(@ROOT@ "/ade-models/profiles.il"))
+unless(boundp('vucAmInitializedSessions) vucAmInitializedSessions=makeTable('vucAmInitializedSessions nil))
+procedure(vucAmApplyModels(session)
+ let((lib tech techObj profile rows sim)
+  sim=asiGetSimName(session)
+  when(member(sim '(spectre "spectre")) && !vucAmInitializedSessions[session]
+   lib=asiGetDesignLibName(session)
+   when(lib && ddGetObj(lib)
+    tech=techGetTechLibName(ddGetObj(lib))
+    techObj=when(tech ddGetObj(tech))
+    profile=when(techObj assoc(techObj~>readPath vucAmModelProfiles))
+    if(profile then
+     rows=cadr(profile)
+     if(forall(row rows isFile(car(row))) then
+      asiSetEnvOptionVal(session "modelFiles" rows)
+      vucAmInitializedSessions[session]=list(lib tech)
+      printf("[ADE models] %s -> %s: %d model entries.\n" lib tech length(rows))
+     else
+      warn("[ADE models] %s: model files missing; automatic selection skipped.\n" lib)
+     )
+    else
+     unless(member(tech '(nil "cdsDefTechLib" "analogLib" "basic"))
+      warn("[ADE models] %s: no validated profile for technology %L; check Model Libraries.\n" lib tech)
+     )
+    )
+   )
+  )
+  t
+ )
+)
+procedure(vucAmSessionInit(session)
+ when(boundp('vucAmPreviousSessionInit) && vucAmPreviousSessionInit!=""
+  foreach(fn parseString(vucAmPreviousSessionInit)
+   when(isCallable(concat(fn)) funcall(concat(fn) session))
+  )
+ )
+ unless(errset(vucAmApplyModels(session) t)
+  warn("[ADE models] Automatic model selection failed; check Model Libraries.\n")
+ )
+ t
+)
+unless(envGetVal("asimenv.startup" "sessInitTrigFunc")=="vucAmSessionInit"
+ vucAmPreviousSessionInit=envGetVal("asimenv.startup" "sessInitTrigFunc")
+ envSetVal("asimenv.startup" "sessInitTrigFunc" 'string "vucAmSessionInit")
+)
+vucAmAutoModelsLoaded=t

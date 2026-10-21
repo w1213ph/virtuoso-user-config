@@ -1,0 +1,12 @@
+; SPDX-License-Identifier: Apache-2.0
+; UI preferences adapted and revised; see NOTICE.
+schematic  createLabelFontStyle  cyclic  "roman"
+schematic  instLabelFontStyle  cyclic  "roman"
+schematic  noteFontStyle  cyclic  "roman"
+schematic  pinLabelSetFontStyle  boolean  t
+schematic  pinLabelFontStyle  cyclic  "roman"
+schematic  symbolLabelFontStyle  cyclic  "roman"
+schematic	createLabelFontHeight	float	0.05
+schematic	symbolLabelFontHeight	float	0.05
+layout  labelFontStyle  cyclic  "roman"
+auCore.misc labelDigits int 6

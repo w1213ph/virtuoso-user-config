@@ -1,0 +1,17 @@
+# Local installation state may contain backups and private paths.
+.install.json
+*.vuc-tmp
+*.local.json
+local/
+build/
+dist/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.log
+*.cdslck
+CDS.log*
+*.oa
+*.sdb
+psf/
+.DS_Store

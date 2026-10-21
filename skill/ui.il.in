@@ -1,0 +1,13 @@
+; SPDX-License-Identifier: Apache-2.0
+; Generated local entry; no shortcuts or design data are changed.
+vucLoaded=nil
+unless(envLoadFile(strcat(@ROOT@ "/ui.cdsenv"))
+ error("[user-config] Could not load UI environment settings.")
+)
+@FONTS@
+when(@OP@ load(strcat(@ROOT@ "/op-annotation/mode-switch.il")))
+when(@MODELS@ load(strcat(@ROOT@ "/ade-models/auto-models.il")))
+vucLoaded=t
+unless(boundp('vucLoadedFeatures) vucLoadedFeatures=nil)
+vucLoadedFeatures=append(vucLoadedFeatures @FEATURES@)
+printf("[user-config] UI preferences loaded. Existing shortcuts preserved.\n")

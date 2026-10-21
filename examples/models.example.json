@@ -1,0 +1,17 @@
+{
+  "profiles": [
+    {
+      "technology_read_path": "/opt/pdk/example/techLib",
+      "models": [
+        {
+          "file": "/opt/pdk/example/models/models.scs",
+          "section": "tt"
+        },
+        {
+          "file": "/opt/pdk/example/models/passives.scs",
+          "section": "res_tt"
+        }
+      ]
+    }
+  ]
+}

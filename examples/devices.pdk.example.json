@@ -1,0 +1,12 @@
+[
+  {
+    "library": "yourPdkLib",
+    "cell": "yourNmosCell",
+    "inline_slots": 5
+  },
+  {
+    "library": "yourPdkLib",
+    "cell": "yourPmosCell",
+    "inline_slots": 5
+  }
+]
