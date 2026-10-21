@@ -1,5 +1,7 @@
 # 高级配置
 
+先用[功能手册](FEATURES.md)确认要启用的模块；本页说明工艺工作点、模型映射和本机工作区需要填写什么。普通界面与波形配置不需要这些工艺输入，[首页](../README.md)提供了单项安装和回退示例。
+
 ## MOS 工作点
 
 `op-annotations` 独立于字体、ViVA 外观和 ADE 模型模块。初始显示模式为器件参数；点击原有 DC Operating Points 菜单后才应用扩展工作点。画布最多五项 `id/vgs/vds/vth/gm`，气泡保留十项，后五项是 `region/gmoverid/rout/ron/cgg`。
